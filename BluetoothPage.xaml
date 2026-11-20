@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:micro="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui"
+             xmlns:local="clr-namespace:AURA_APP_TEST"
+             x:Class="AURA_APP_TEST.BluetoothPage"
+             x:DataType="local:BluetoothPage">
+    <VerticalStackLayout Padding="30,0" Spacing="25">
+        <Label
+            Text="Bluetooth Connection"
+            Style="{StaticResource Headline}"
+            TextColor="Black"
+            SemanticProperties.HeadingLevel="Level1" />
+        <Border
+            Grid.Column="0" BackgroundColor="{Binding ConnectionStatusColor}" HeightRequest="125"
+            WidthRequest="200" Stroke="Black" 
+            StrokeThickness="2" Padding="10">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20,20,20,20" />
+            </Border.StrokeShape>
+            <Label
+                x:Name="ConnectionStatusLabel"
+                Text="{Binding ConnectionStatus}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                FontSize="Large"
+                TextColor="Black"  />
+        </Border>
+        <Button
+            x:Name="ConnectButton"
+            Text="Connect"
+            WidthRequest="200"
+            BackgroundColor="LightBlue"
+            TextColor="Black"
+            Clicked="OnConnectButtonClicked" />      
+    </VerticalStackLayout>
+</ContentPage>

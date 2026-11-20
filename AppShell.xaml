@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="AURA_APP_TEST.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="AURA_APP_TEST">
+
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent
+            x:Name="MainShellContent"
+            Title="Home"
+            Shell.TabBarIsVisible="False"
+            Icon="sun_icon.jpg"
+            Route="MainPage" />
+
+        <ShellContent
+            x:Name="BluetoothShellContent"
+            Title="Bluetooth" 
+            Shell.TabBarIsVisible="False"
+            Icon="bluetooth_icon.jpg"
+            Route="BluetoothPage" />
+    </FlyoutItem>
+</Shell>

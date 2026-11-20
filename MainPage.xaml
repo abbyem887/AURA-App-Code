@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:micro="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui"
+             xmlns:local="clr-namespace:AURA_APP_TEST"
+             x:Class="AURA_APP_TEST.MainPage"
+             x:DataType="local:MainPage">
+
+    <Grid RowDefinitions="*,Auto">
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout
+                Padding="30,0"
+                Spacing="25">
+
+            <Label
+                Text="A.U.R.A Tracking App"
+                Style="{StaticResource Headline}"
+                TextColor="Black"
+                SemanticProperties.HeadingLevel="Level1" />
+
+            <Grid x:Name="MainGrid" HorizontalOptions="Center"
+                ColumnDefinitions="*,*" RowDefinitions="*" ColumnSpacing="15">
+                  <Border
+                      Grid.Column="0"
+                      BackgroundColor="#c7d6e3"
+                      HeightRequest="125"
+                      WidthRequest="150"
+                      Stroke="Black" 
+                      StrokeThickness="2"
+                      Padding="10">
+                      <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20,20,20,20" />
+                     </Border.StrokeShape>
+                      <Label
+                       Text="{Binding AQCurrentValue,
+                        StringFormat='Current AQI: {0}'}"
+                        TextColor="Black"
+                        FontSize="Large" />
+                    </Border>
+               
+                <Border
+                    Grid.Column="1"
+                      BackgroundColor="#e9c770"
+                      HeightRequest="125"
+                      WidthRequest="150"
+                      Stroke="Black" 
+                      StrokeThickness="2"
+                      Padding="10">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20,20,20,20" />
+                     </Border.StrokeShape>
+                      <Label
+                        Text="{Binding UVCurrentValue,
+                        StringFormat='Current UV: {0}'}"
+                        TextColor="Black"
+                        FontSize="Large"/>        
+                </Border>
+            </Grid>
+            
+            <Border x:Name="AQBorder"
+                      BackgroundColor="#c7d6e3"
+                      HeightRequest="125"
+                      WidthRequest="150"
+                      Stroke="Black" 
+                      StrokeThickness="2"
+                      Padding="10"
+                      IsVisible="false">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20,20,20,20" />
+                     </Border.StrokeShape>
+                      <Label
+                        Text="{Binding AQCurrentValue,
+                        StringFormat='Current AQI: {0}'}"
+                        TextColor="Black"
+                        FontSize="Large" />
+            </Border>
+
+            <Border x:Name="UVBorder"
+                      BackgroundColor="#e9c770"
+                      HeightRequest="125"
+                      WidthRequest="150"
+                      Stroke="Black" 
+                      StrokeThickness="2"
+                      Padding="10"
+                      IsVisible="false">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20,20,20,20" />
+                     </Border.StrokeShape>
+                      <Label
+                        Text="{Binding UVCurrentValue,
+                        StringFormat='Current UV: {0}' }"
+                        TextColor="Black"
+                        FontSize="Large"/>                 
+            </Border>
+
+            <!--Charts-->
+            <Grid x:Name="UVChartGrid" HorizontalOptions="Center"
+                ColumnDefinitions="*" RowDefinitions="*,*">
+                <Label
+                    Text="UV Index Chart"
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    Grid.Row="0"/>
+               <micro:ChartView
+                Chart="{Binding UVChart}"
+                HeightRequest="200" 
+                WidthRequest="300"
+                HorizontalOptions="Center"
+                Grid.Row="1"/> 
+            </Grid>
+
+             <Grid x:Name="AQChartGrid" HorizontalOptions="Center"
+                ColumnDefinitions="*" RowDefinitions="*,*">
+                <Label
+                    Text="Air Quality Chart"
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    Grid.Row="0"/>
+                <micro:ChartView
+                    Chart="{Binding AQChart}"
+                    HeightRequest="200"
+                    WidthRequest="300"
+                    HorizontalOptions="Center"
+                    Grid.Row="1"/>
+            </Grid>
+            
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <Grid x:Name="ButtonGrid" Grid.Row="1" Padding="30,8,30,12"
+              ColumnDefinitions="*,*,*" ColumnSpacing="8">
+            <Button
+                x:Name="UVButton"
+                Clicked="OnUVButtonClicked"
+                BackgroundColor="#e9c770"
+                Text="UV"
+                TextColor="Black"
+                FontSize="Large"
+                Grid.Column="0"/>
+            <Button
+                x:Name="AQButton"
+                Clicked="OnAQButtonClicked"
+                BackgroundColor="#c7d6e3"
+                Text="AQI"
+                TextColor="Black"
+                FontSize="Large"
+                Grid.Column="1" />
+            <Button
+                x:Name="DefaultButton"
+                Clicked="OnDefaultButtonClicked"
+                BackgroundColor="#eeeced"
+                Text="All Data"
+                TextColor="Black"
+                FontSize="Large"
+                Grid.Column="2" />
+        </Grid>
+    </Grid>
+
+</ContentPage>
